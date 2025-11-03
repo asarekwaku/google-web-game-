@@ -2250,6 +2250,7 @@ quietly
 quit
 quite
 quote
+rat
 race
 racial
 radical
