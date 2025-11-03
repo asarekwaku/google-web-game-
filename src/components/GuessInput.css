@@ -1,0 +1,16 @@
+.Guess-input {
+  text-align: left;
+  padding: 10px;
+}
+
+.Guess-input > div:first-child {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.Guess-input .MuiTextField-root {
+  width: 100%;
+  max-width: 300px;
+}
+

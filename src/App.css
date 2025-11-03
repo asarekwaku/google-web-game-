@@ -1,38 +1,77 @@
 .App {
-  text-align: center;
+  color: #282c34;
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header-section {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.App .header-section {
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.section-container {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 4px solid;
+  border-radius: 8px;
+  min-height: 100px;
+}
+
+.toggle-section {
+  flex: 1;
+  border-color: #f44336; /* Red */
+  background-color: #ffebee;
+}
+
+.board-section {
+  border-color: #2196f3; /* Blue */
+  background-color: #e3f2fd;
+}
+
+.guess-section {
+  border-color: #4caf50; /* Green */
+  background-color: #e8f5e9;
+}
+
+.solutions-section {
+  border-color: #ff9800; /* Dark Orange */
+  background-color: #fff3e0;
+}
+
+.section-label {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.current-guess-display {
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+  color: #1976d2;
+  margin-top: 10px;
+}
+
+.current-guess-display strong {
+  font-size: 24px;
+  color: #1565c0;
 }

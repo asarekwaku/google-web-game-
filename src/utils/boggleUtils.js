@@ -1,0 +1,37 @@
+// Boggle board generation utilities with weighted letter distribution
+
+// Weighted letter distribution based on Boggle/Scrabble frequencies
+const letterDistribution = {
+  'A': 8, 'B': 2, 'C': 3, 'D': 4, 'E': 12, 'F': 2, 'G': 3,
+  'H': 2, 'I': 9, 'J': 1, 'K': 1, 'L': 4, 'M': 2, 'N': 6,
+  'O': 8, 'P': 2, 'Q': 1, 'R': 6, 'S': 4, 'T': 6, 'U': 4,
+  'V': 2, 'W': 2, 'X': 1, 'Y': 2, 'Z': 1
+};
+
+// Build weighted array for random selection
+const weightedLetters = [];
+Object.keys(letterDistribution).forEach(letter => {
+  for (let i = 0; i < letterDistribution[letter]; i++) {
+    weightedLetters.push(letter);
+  }
+});
+
+// Get a random letter based on weighted distribution
+export function getRandomLetter() {
+  const randomIndex = Math.floor(Math.random() * weightedLetters.length);
+  return weightedLetters[randomIndex];
+}
+
+// Generate a random NxN Boggle board
+export function generateBoard(size) {
+  const board = [];
+  for (let i = 0; i < size; i++) {
+    const row = [];
+    for (let j = 0; j < size; j++) {
+      row.push(getRandomLetter());
+    }
+    board.push(row);
+  }
+  return board;
+}
+

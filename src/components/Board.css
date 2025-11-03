@@ -1,0 +1,52 @@
+.Board-div {
+  padding: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board-grid {
+  display: inline-block;
+}
+
+.board-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.board-row:last-child {
+  margin-bottom: 0;
+}
+
+.Tile {
+  display: inline-block;
+  padding: 2px;
+}
+
+.Tile .MuiPaper-root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: white;
+  transition: background-color 0.2s;
+}
+
+.Tile .MuiPaper-root.selected {
+  background-color: #90caf9;
+}
+
+.Tile .MuiPaper-root:hover {
+  background-color: #e3f2fd;
+}
+

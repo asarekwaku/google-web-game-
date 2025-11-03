@@ -1,0 +1,11 @@
+.Game-controls {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.Input-select-size {
+  display: inline-block;
+}
+
