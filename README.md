@@ -1,70 +1,183 @@
-# Getting Started with Create React App
+# Boggle Word Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fully functional web-based Boggle game built with React. Find words by connecting adjacent letters on the board using either click-and-drag selection or text input.
+
+![Boggle Game](https://img.shields.io/badge/React-19.2.0-blue) ![Material-UI](https://img.shields.io/badge/Material--UI-7.3.4-blue)
+
+## Features
+
+- 🎮 **Interactive Gameplay**: Play Boggle with custom grid sizes (3x3 to 10x10)
+- 🖱️ **Click-to-Select**: Click and drag across tiles to form words visually
+- ⌨️ **Text Input**: Type words manually for a traditional experience
+- 🎯 **Word Validation**: Validates words against dictionary and board adjacency rules
+- ⏱️ **Timer**: Tracks game time automatically
+- 📊 **Score Tracking**: Score based on word length
+- 📝 **Game Summary**: View found words, missed words, and total time at game end
+- 🔍 **Board Solver**: Uses DFS algorithm with Trie to find all valid words on the board
+
+## Game Rules
+
+1. **Minimum Word Length**: Words must be at least 3 letters long
+2. **Adjacency Rule**: Letters must be adjacent horizontally, vertically, or diagonally
+3. **No Tile Reuse**: Each tile can only be used once per word
+4. **Dictionary Validation**: Words must exist in the game's dictionary
+5. **Q = QU**: The letter Q is treated as "QU" in words
+6. **No Duplicates**: Each word can only be counted once per game
+
+## Installation
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/asarekwaku/google-web-game-.git
+cd google-web-game-
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## How to Play
+
+### Starting a Game
+
+1. Select your desired grid size (3x3 to 10x10) from the dropdown
+2. Click "START A NEW GAME!" to begin
+3. A random board will be generated and the timer will start
+
+### Finding Words
+
+**Method 1: Click-and-Drag**
+- Click and hold on a letter tile
+- Drag to adjacent tiles to form a word
+- Release the mouse to submit the word
+- Selected tiles will be highlighted in blue
+
+**Method 2: Text Input**
+- Type your word in the text input field
+- Press Enter to submit
+- The game validates the word against adjacency rules and dictionary
+
+### Ending a Game
+
+- Click "END GAME" when you're finished
+- View your results:
+  - Total words found
+  - Total time elapsed
+  - List of missed words
+
+## Project Structure
+
+```
+google-web-game-/
+├── public/
+│   ├── dictionary.txt      # Word dictionary (3000+ words)
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── Board.js        # Game board display
+│   │   ├── GameControls.js # Start/End game and grid size selector
+│   │   ├── GameSummary.js  # End game summary display
+│   │   ├── GuessInput.js   # Text input for word guesses
+│   │   ├── Header.js       # App header/logo
+│   │   └── WordList.js     # Display found words
+│   ├── utils/
+│   │   ├── boggleUtils.js  # Board generation utilities
+│   │   ├── boardSolver.js  # DFS algorithm to solve board
+│   │   ├── trie.js         # Trie data structure for dictionary
+│   │   └── wordValidator.js # Validates word formation on board
+│   ├── App.js              # Main app component with state management
+│   └── ...
+└── package.json
+```
+
+## Technologies Used
+
+- **React 19.2.0** - UI library
+- **Material-UI (MUI) 7.3.4** - Component library and styling
+- **React Hooks** - State management (useState, useEffect)
+- **Trie Data Structure** - Efficient dictionary lookups
+- **DFS Algorithm** - Board solving and word validation
+
+## Key Algorithms
+
+### Board Generation
+- Uses weighted letter distribution based on Boggle/Scrabble frequencies
+- Generates random N×N boards with realistic letter distribution
+
+### Word Solver
+- Depth-First Search (DFS) algorithm
+- Explores all 8-directional paths from each starting position
+- Uses Trie for efficient prefix matching and pruning
+- Tracks visited tiles to prevent reuse
+
+### Word Validation
+- Validates adjacency rules for manually typed words
+- Ensures consecutive letters are adjacent on the board
+- Prevents tile reuse within a single word
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Runs the app in development mode at [http://localhost:3000](http://localhost:3000)
 
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in interactive watch mode
 
 ### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Builds the app for production to the `build` folder
 
 ### `npm run eject`
+**Note: This is a one-way operation!** Ejects from Create React App for full configuration control
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Customization
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Dictionary
+Edit `public/dictionary.txt` to add or remove words. Each word should be on a separate line.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Grid Sizes
+Modify the grid size options in `src/components/GameControls.js` (currently 3-10).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Scoring
+Adjust scoring logic in `src/App.js` in the `handleGuessSubmit` function.
 
-## Learn More
+## Future Enhancements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [ ] Sound effects for correct/incorrect words
+- [ ] Difficulty levels (easy/medium/hard board generation)
+- [ ] Multiplayer mode
+- [ ] Leaderboard
+- [ ] Word definitions
+- [ ] Animation effects for found words
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
+This project is open source and available for personal and educational use.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Acknowledgments
 
-### Analyzing the Bundle Size
+- Built following the "Thinking in React" methodology
+- Inspired by the classic Boggle word game
+- Uses standard Boggle rules and gameplay mechanics
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Enjoy playing Boggle! 🎮📝
