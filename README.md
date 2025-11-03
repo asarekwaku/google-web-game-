@@ -1,8 +1,8 @@
 # Boggle Word Game
 
 A fully functional web-based Boggle game built with React. Find words by connecting adjacent letters on the board using either click-and-drag selection or text input.
+<img width="1293" height="825" alt="image" src="https://github.com/user-attachments/assets/c3db84fe-0cd4-4b72-b80a-069caba8bbc4" />
 
-![Boggle Game](https://img.shields.io/badge/React-19.2.0-blue) ![Material-UI](https://img.shields.io/badge/Material--UI-7.3.4-blue)
 
 ## Features
 
